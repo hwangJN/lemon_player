@@ -1,4 +1,19 @@
 extends base
-
 block content
-    div
+
+    div 메인 홈
+    div.chart-header
+        span TOP 10
+        button 
+            a(href="/chart") 더보기
+    .chart-div 
+      
+        each sing in sings 
+              ul.each-sing
+                  li
+                    img(src=`${sing.albumCover}`).coverImg
+                    .sing-detail
+                        span.title= sing.title
+                        span.singer= sing.singer
+
+        

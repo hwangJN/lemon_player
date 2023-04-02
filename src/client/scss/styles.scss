@@ -22,3 +22,29 @@ body {
   background-color: $bg;
   color: white;
 }
+.header {
+  height: 60px;
+  background-color: yellow;
+  color: black;
+}
+.chart-header {
+  display: flex;
+  justify-content: center;
+}
+.chart-div {
+  height: 50vh;
+  background-color: rgba(222, 222, 222, 0.658);
+}
+.each-sing {
+  height: 50px;
+  li {
+    display: flex;
+    height: 100%;
+  }
+}
+.coverImg {
+  height: 80%;
+}
+.sing-detail {
+  width: fit-content;
+}
