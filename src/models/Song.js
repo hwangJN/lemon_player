@@ -35,7 +35,6 @@ async function saveData() {
     console.log(err);
   }
 }
-
 //데이터 다 지우기
 async function deleteDate() {
   Song.deleteMany({}, function (err) {
@@ -52,8 +51,10 @@ Song.find({}, function (err, data) {
   if (err) {
     console.error(err);
   } else {
-    console.log("song :", data);
+    //console.log("song :", data);
   }
 });
+const sings = Song.find().sort({ "meta.view": -1 });
+console.log("sort!!!!", sings);
 
 export default Song;

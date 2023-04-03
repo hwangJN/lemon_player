@@ -1,0 +1,43 @@
+.chart-div {
+  height: 50vh;
+  background-color: rgba(222, 222, 222, 0.941);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.each-song {
+  li {
+    height: 60px;
+    display: flex;
+
+    padding: 10px 0;
+  }
+}
+.coverImg {
+  height: 100%;
+}
+.song-detail {
+  width: 180px;
+
+  display: flex;
+  .rank {
+    padding-top: 5px;
+    flex-grow: 1;
+    text-align: center;
+  }
+  .songInfo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+    .title {
+      line-height: 26px;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .singer {
+      font-size: 14px;
+      color: rgba(61, 61, 61, 0.821);
+      font-weight: 300;
+    }
+  }
+}

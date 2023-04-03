@@ -1,19 +1,24 @@
 extends base
-block content
 
-    div 메인 홈
+block newestAlbum
+    .newestAlbum 
+        h1 최신앨범
+
+block top10
     div.chart-header
         span TOP 10
         button 
             a(href="/chart") 더보기
     .chart-div 
       
-        each sing in sings 
-              ul.each-sing
+        each song, index in songsTop10 
+              ul.each-song
                   li
-                    img(src=`${sing.albumCover}`).coverImg
-                    .sing-detail
-                        span.title= sing.title
-                        span.singer= sing.singer
+                    img(src=`${song.albumCover}`).coverImg
+                    .song-detail
+                        span.rank= index+1
+                        div.songInfo
+                            span.title= song.title
+                            span.singer= song.singer
 
         

@@ -3,12 +3,15 @@ html(lang="ko")
     head
         title #{pageTitle} | #{siteName}
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
+        link(href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css', rel='stylesheet', type='text/css')
         link(rel="stylesheet", href="/static/css/styles.css")
-        link(rel="stylesheet", href="/src/client.scss/styles.css")
+        link(rel="stylesheet", href="/src/client/scss/main.css")
     body
-        include partials/header                
+        include partials/header 
+        .intro 메인화면      
         main
-            block content
+            block newestAlbum
+            block top10
         include partials/footer
     script(src="/static/js/main.js") 
  
