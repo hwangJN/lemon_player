@@ -1,43 +1,61 @@
+@mixin text-ellipsis {
+  overflow: hidden; // 을 사용해 영역을 감출 것
+  text-overflow: ellipsis; // 로 ... 을 만들기
+  white-space: nowrap; // 아래줄로 내려가는 것을 막기위해
+  word-break: break-all;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: center;
+}
 .chart-div {
-  height: 50vh;
-  background-color: rgba(222, 222, 222, 0.941);
+  //height: 50vh;
+  //background-color: rgba(222, 222, 222, 0.941);
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-.each-song {
-  li {
-    height: 60px;
-    display: flex;
+  .each-song {
+    li {
+      height: 60px;
+      display: flex;
+      padding: 10px 0;
+      gap: 10px;
 
-    padding: 10px 0;
+      .song-detail {
+        width: 200px;
+        display: flex;
+        gap: 10px;
+        .rank {
+          padding-top: 5px;
+
+          text-align: center;
+        }
+        .songInfo {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          width: 180px;
+          .title {
+            width: 100%;
+            line-height: 26px;
+            display: block;
+            margin-bottom: 2px;
+            @include text-ellipsis;
+          }
+          .singer {
+            font-size: 14px;
+            color: rgba(61, 61, 61, 0.821);
+            font-weight: 300;
+            @include text-ellipsis;
+          }
+        }
+      }
+    }
   }
 }
+
 .coverImg {
   height: 100%;
-}
-.song-detail {
-  width: 180px;
-
-  display: flex;
-  .rank {
-    padding-top: 5px;
-    flex-grow: 1;
-    text-align: center;
-  }
-  .songInfo {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 3;
-    .title {
-      line-height: 26px;
-      display: block;
-      margin-bottom: 2px;
-    }
-    .singer {
-      font-size: 14px;
-      color: rgba(61, 61, 61, 0.821);
-      font-weight: 300;
-    }
-  }
+  border-radius: 5px;
 }

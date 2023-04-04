@@ -17,13 +17,76 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: $bg;
   color: $textColor;
+  margin: 20px 40px;
+}
+.main {
+  margin: 20px auto;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
 }
 .header {
-  height: 60px;
-  background-color: yellow;
+  height: 50px;
+  //background-color: yellow;
   color: black;
-}
-.chart-header {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  .logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 65%;
+      width: auto;
+    }
+    span {
+      font-weight: 600;
+      width: 90px;
+      text-align: center;
+      font-size: 23px;
+    }
+  }
+}
+
+.newestAlbum {
+  width: 750px;
+  h1 {
+    font-weight: 500;
+    line-height: 40px;
+  }
+  .new-album {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    .each-song {
+      li {
+        width: 150px;
+        flex-direction: column;
+        .coverImg {
+          width: 100%;
+          height: auto;
+          border-radius: 10px;
+          -webkit-box-reflect: below -59px linear-gradient(transparent, transparent, rgba(0, 0, 0, 1));
+        }
+        .song-detail {
+          display: flex;
+          flex-direction: column;
+          margin-top: 10px;
+          .title {
+            font-size: 16px;
+            line-height: 20px;
+            padding: 4px 0;
+            @include text-ellipsis;
+          }
+          .singer {
+            @include text-ellipsis;
+            font-size: 13px;
+            padding: 2px 0;
+            color: rgba(61, 61, 61, 0.821);
+          }
+        }
+      }
+    }
+  }
 }

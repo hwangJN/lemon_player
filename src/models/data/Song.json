@@ -24,11 +24,88 @@
   {
     "title": "OMG",
     "singer": "NewJeans",
-    "albumTitle": "  NewJeans 'OMG'",
+    "albumTitle": "NewJeans 'OMG'",
     "albumCover": "https://image.bugsm.co.kr/album/images/200/40824/4082425.jpg?version=20230105002539.0",
     "source": "",
     "meta": {
       "play": 80,
+      "heart": 0
+    }
+  },
+  {
+    "title": "Teddy Bear",
+    "singer": "STAYC",
+    "albumTitle": "Teddy Bear",
+    "albumCover": "https://image.bugsm.co.kr/album/images/1000/40835/4083531.jpg",
+    "source": "",
+    "meta": {
+      "play": 10,
+      "heart": 0
+    }
+  },
+  {
+    "title": "파이팅 해야지 (Feat. 이영지)",
+    "singer": "부석순(SEVENTEEN)",
+    "albumTitle": "SECOND WIND",
+    "albumCover": "https://image.bugsm.co.kr/album/images/200/40835/4083586.jpg?version=20230314012829.0",
+    "source": "",
+    "meta": {
+      "play": 60,
+      "heart": 0
+    }
+  },
+  {
+    "title": "사건의 지평선",
+    "singer": "윤하",
+    "albumTitle": "END THEORY : Final Edition",
+    "albumCover": "https://image.bugsm.co.kr/album/images/200/40734/4073469.jpg?version=20230110005119.0",
+    "source": "",
+    "meta": {
+      "play": 65,
+      "heart": 0
+    }
+  },
+  {
+    "title": "ANTIFRAGILE",
+    "singer": "LE SSERAFIM (르세라핌)",
+    "albumTitle": "ANTIFRAGILE",
+    "albumCover": "https://image.bugsm.co.kr/album/images/200/40807/4080706.jpg?version=20221115025821.0",
+    "source": "",
+    "meta": {
+      "play": 5,
+      "heart": 0
+    }
+  },
+  {
+    "title": "밤이 무서워요 (Lonely Night)",
+    "singer": "주주 시크릿",
+    "albumTitle": "밤이 무서워요 (Lonely Night)",
+    "albumCover": "https://image.bugsm.co.kr/album/images/200/205549/20554957.jpg?version=20230328014246.0",
+    "source": "",
+    "meta": {
+      "play": 4,
+      "heart": 0
+    }
+  },
+  {
+    "title": "Shut Down",
+    "singer": "BLACKPINK",
+    "albumTitle": "BORN PINK",
+    "albumCover": "https://image.bugsm.co.kr/album/images/1000/40788/4078880.jpg",
+    "source": "",
+    "meta": {
+      "play": 15,
+      "heart": 0
+    }
+  },
+  {
+    "title": "Dangerously",
+    "singer": "Charlie Puth",
+    "albumTitle": "Nine Track Mind (Deluxe Edition)",
+    "albumCover": "https://image.bugsm.co.kr/album/images/1000/5277/527746.jpg",
+    "source": "",
+    "meta": {
+      "play": 8,
       "heart": 0
     }
   }

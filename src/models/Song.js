@@ -51,7 +51,7 @@ Song.find({}, function (err, data) {
   if (err) {
     console.error(err);
   } else {
-    //console.log("song :", data);
+    console.log("song :", data.slice(0, 2));
   }
 });
 const sings = Song.find().sort({ "meta.view": -1 });

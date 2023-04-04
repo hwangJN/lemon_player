@@ -3,22 +3,35 @@ extends base
 block newestAlbum
     .newestAlbum 
         h1 최신앨범
+        div.new-album
+            each song, index in songs
+                ul.each-song(onclick="clickcompo()")
+                    li
+                        img(src=`${song.albumCover}`).coverImg
+                        .song-detail                            
+                            span.title= song.albumTitle
+                            span.singer= song.singer
 
 block top10
-    div.chart-header
-        span TOP 10
-        button 
-            a(href="/chart") 더보기
-    .chart-div 
-      
-        each song, index in songsTop10 
-              ul.each-song
-                  li
-                    img(src=`${song.albumCover}`).coverImg
-                    .song-detail
-                        span.rank= index+1
-                        div.songInfo
-                            span.title= song.title
-                            span.singer= song.singer
+    .top10
+        .chart-header
+            span Today's TOP 10
+            button 
+                a(href="/chart") 더보기
+        .chart-div 
+        
+            each song, index in songsTop10 
+                ul(data-song-id=song._id, onclick="handleSongClick(this)").each-song
+                    li
+                        img(src=`${song.albumCover}`).coverImg
+                        .song-detail
+                            span.rank= index+1
+                            div.songInfo
+                                span.title= song.title
+                                span.singer= song.singer
+
+
+
+
 
         
