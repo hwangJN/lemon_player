@@ -1,0 +1,80 @@
+.music-video {
+  width: 90%;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 750px;
+  #play-video {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000091;
+    i {
+      color: white;
+      font-size: 30px;
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      cursor: pointer;
+    }
+    .youtube-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0 auto;
+      width: 80%;
+      padding-bottom: 42.25%; /* 16:9 비율에 대한 padding */
+      height: 0;
+      overflow: hidden;
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        //padding-bottom: 100%;
+      }
+    }
+  }
+  h3 {
+    font-size: 25px;
+    height: 30px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  .mv-wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+    gap: 15px;
+    .each-mv {
+      display: flex;
+      flex-direction: column;
+      width: 32%;
+      justify-content: space-around;
+      margin-bottom: 5px;
+      img,
+      span {
+      }
+      img {
+        width: 100%;
+        border-radius: 10px;
+      }
+      span {
+        @include text-ellipsis;
+        padding-left: 5px;
+        line-height: 40px;
+        font-size: 15px;
+        width: 80%;
+      }
+    }
+  }
+}

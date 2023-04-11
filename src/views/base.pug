@@ -5,28 +5,12 @@ html(lang="ko")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
         link(href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css', rel='stylesheet', type='text/css')
         link(rel="stylesheet", href="/static/css/styles.css")
-        script(src="/static/js/main.js") 
-        script.
-            function handleSongClick(songElem) {
-                console.log(songElem);
-                const songId = songElem.dataset.songId;
-                console.log(songId);
-                fetch("/", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ songId }),
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                    console.log("Song clicks updated:", data);
-                    })
-                    .catch((error) => console.error(error));
-            }
-
+        script(src="https://kit.fontawesome.com/fe393b8697.js")
+        
     body
         include partials/header            
-        main.main
-            block newestAlbum
-            block top10
-        include partials/footer
+        #home.main-wrap
+            block contents
+            include partials/footer
+        script(src="/static/js/main.js")
     

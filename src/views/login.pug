@@ -1,0 +1,13 @@
+extends base
+
+block contents 
+    .login
+        .login-wrap
+            .info
+                h3 Log In
+                span WELCOME TO LEMON!
+            form(action='/login', method='POST').login-form
+                input(type='text', autocomplete="off", placeholder="ID" name='id')
+                input(type='password', placeholder="PASSWORD",name='password')
+                span.error-message=errorMessage
+                button(type='submit').submit-btn Login

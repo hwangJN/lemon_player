@@ -1,4 +1,57 @@
+script.
+    function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.scrollIntoView({ behavior: "smooth" });
+    }
 header.header
     a(href="/").logo
         img(src="/public/client/scss/img/lemon.png", alt='logo')
         span LEMON
+
+    .user-profile
+        img(src="/public/client/scss/img/profile.jpg", alt='profile').profile-img
+        if (loggedIn)
+            span=loggedInUser.username
+        else
+            span 로그인이 필요합니다
+    .nav-menu
+        a(href="#home")
+            ul
+                li
+                    i.fa.fa-home
+                li HOME
+        ul
+            li
+                i.fa.fa-list-ul
+            li Play List
+        ul
+            li
+                i.fa.fa-user
+            li My Page
+        a(href="#fullchart")
+            ul
+                li
+                    i.fa.fa-chart-line
+                li Chart
+    .new 
+        span NEW
+        ul 
+            li
+                i.fa.fa-compact-disc 
+            li Album
+        ul 
+            li
+                i.fa.fa-video 
+            li 
+                a(href="#mv") Music Video 
+
+    .logout 
+        i.fa.fa-arrow-right
+        if (loggedIn)
+            form(action='/logout', method='POST')
+                button(type='submit') Logout
+        else
+            a(href='/login') 
+                button LogIn
+        
+

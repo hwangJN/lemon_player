@@ -8,8 +8,11 @@ import { localsMiddleware } from "./middlewares";
 import rootRouter from "./routers/rootRouter";
 import chartRouter from "./routers/chartRouter";
 import "./models/Song.js";
-
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
+
 const logger = morgan("dev");
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
@@ -22,6 +25,11 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
+    // cookie: {
+    //   httpOnly: true,
+    //   secure: true,
+    //   sameSite: "none",
+    // },
   })
 );
 app.use(flash());

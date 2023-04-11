@@ -7,23 +7,49 @@
 
 .chart-header {
   display: flex;
-  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 17px;
+  span {
+    font-weight: 500;
+    font-size: 18px;
+    padding-left: 10px;
+  }
+  button {
+    border: 0;
+    border-radius: 10px;
+    padding: 3px;
+    width: 55px;
+    height: 30px;
+    font-size: 12px;
+    background-color: $mainColor;
+  }
 }
 .chart-div {
   //height: 50vh;
   //background-color: rgba(222, 222, 222, 0.941);
   display: flex;
-  align-items: center;
+  width: 680px;
   flex-direction: column;
+  flex-wrap: wrap;
+  height: 350px;
   .each-song {
+    cursor: pointer;
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+      rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     li {
-      height: 60px;
+      height: 55px;
       display: flex;
-      padding: 10px 0;
+      align-items: center;
       gap: 10px;
 
       .song-detail {
         width: 200px;
+        height: 100%;
         display: flex;
         gap: 10px;
         .rank {
@@ -37,19 +63,25 @@
           flex-grow: 1;
           width: 180px;
           .title {
+            font-size: 15px;
             width: 100%;
             line-height: 26px;
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 6px;
             @include text-ellipsis;
           }
           .singer {
-            font-size: 14px;
+            font-size: 13px;
             color: rgba(61, 61, 61, 0.821);
             font-weight: 300;
             @include text-ellipsis;
           }
         }
+      }
+      i {
+        padding: 0 10px;
+        font-size: 18px;
+        color: #a2a2a28c;
       }
     }
   }

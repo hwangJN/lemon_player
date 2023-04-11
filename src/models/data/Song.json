@@ -1,111 +1,101 @@
 [
   {
-    "title": "Kitsch",
-    "singer": "IVE(아이브)",
-    "albumTitle": "Kitsch",
-    "albumCover": "https://image.bugsm.co.kr/album/images/200/40849/4084947.jpg?version=20230328064955.0",
-    "source": "",
+    "title": "Dark Mystery Trailer (Taking Our time)",
+    "singer": "AlexGrohl",
+    "albumCover": "https://cdn.pixabay.com/audio/2022/12/29/19-57-46-594_200x200.jpg",
+    "music": "dark-mystery-trailer-taking-our-time",
     "meta": {
-      "play": 50,
+      "play": 1,
       "heart": 0
     }
   },
   {
-    "title": "꽃",
-    "singer": "지수(JISOO)",
-    "albumTitle": "ME",
-    "albumCover": "https://image.bugsm.co.kr/album/images/200/40850/4085066.jpg?version=20230401073221.0",
-    "source": "",
+    "title": "Awaken",
+    "singer": "OYStudio",
+    "albumCover": "https://cdn.pixabay.com/audio/2023/01/31/09-58-23-591_200x200.jpg",
+    "music": "awaken-136824",
     "meta": {
-      "play": 30,
+      "play": 0,
       "heart": 0
     }
   },
   {
-    "title": "OMG",
-    "singer": "NewJeans",
-    "albumTitle": "NewJeans 'OMG'",
-    "albumCover": "https://image.bugsm.co.kr/album/images/200/40824/4082425.jpg?version=20230105002539.0",
-    "source": "",
+    "title": "Inspiring Dream",
+    "singer": "AudioCoffee",
+    "albumCover": "https://cdn.pixabay.com/audio/2023/02/28/17-12-53-166_200x200.png",
+    "music": "inspiring-dream",
     "meta": {
-      "play": 80,
+      "play": 0,
       "heart": 0
     }
   },
   {
-    "title": "Teddy Bear",
-    "singer": "STAYC",
-    "albumTitle": "Teddy Bear",
-    "albumCover": "https://image.bugsm.co.kr/album/images/1000/40835/4083531.jpg",
-    "source": "",
+    "title": "Playful",
+    "singer": "AudioCoffee",
+    "albumCover": "https://cdn.pixabay.com/audio/2023/02/28/16-43-51-599_200x200.png",
+    "music": "playful",
     "meta": {
-      "play": 10,
+      "play": 0,
       "heart": 0
     }
   },
   {
-    "title": "파이팅 해야지 (Feat. 이영지)",
-    "singer": "부석순(SEVENTEEN)",
-    "albumTitle": "SECOND WIND",
-    "albumCover": "https://image.bugsm.co.kr/album/images/200/40835/4083586.jpg?version=20230314012829.0",
-    "source": "",
+    "title": "Cinematic Documentary Piano",
+    "singer": "The Mountain",
+    "albumCover": "https://cdn.pixabay.com/audio/2023/03/04/09-59-51-790_200x200.jpg",
+    "music": "cinematic-documentary-piano",
     "meta": {
-      "play": 60,
+      "play": 0,
       "heart": 0
     }
   },
   {
-    "title": "사건의 지평선",
-    "singer": "윤하",
-    "albumTitle": "END THEORY : Final Edition",
-    "albumCover": "https://image.bugsm.co.kr/album/images/200/40734/4073469.jpg?version=20230110005119.0",
-    "source": "",
+    "title": "Stomps And Claps (Percussion and Rhythm)",
+    "singer": "Alex Kizenkov",
+    "albumCover": "https://cdn.pixabay.com/audio/2023/03/15/06-32-36-535_200x200.png",
+    "music": "stomps-and-claps-percussion-and-rhythm",
     "meta": {
-      "play": 65,
+      "play": 0,
       "heart": 0
     }
   },
   {
-    "title": "ANTIFRAGILE",
-    "singer": "LE SSERAFIM (르세라핌)",
-    "albumTitle": "ANTIFRAGILE",
-    "albumCover": "https://image.bugsm.co.kr/album/images/200/40807/4080706.jpg?version=20221115025821.0",
-    "source": "",
+    "title": "Beautiful Trip",
+    "singer": "SoulProdMusic",
+    "albumCover": "https://cdn.pixabay.com/audio/2023/03/14/00-19-33-916_200x200.jpg",
+    "music": "beautiful-trip",
     "meta": {
-      "play": 5,
+      "play": 0,
       "heart": 0
     }
   },
   {
-    "title": "밤이 무서워요 (Lonely Night)",
-    "singer": "주주 시크릿",
-    "albumTitle": "밤이 무서워요 (Lonely Night)",
-    "albumCover": "https://image.bugsm.co.kr/album/images/200/205549/20554957.jpg?version=20230328014246.0",
-    "source": "",
+    "title": "Lifelike",
+    "singer": "AlexiAction",
+    "albumCover": "https://cdn.pixabay.com/audio/2022/11/22/06-30-38-127_200x200.jpg",
+    "music": "lifelike",
     "meta": {
-      "play": 4,
+      "play": 0,
       "heart": 0
     }
   },
   {
-    "title": "Shut Down",
-    "singer": "BLACKPINK",
-    "albumTitle": "BORN PINK",
-    "albumCover": "https://image.bugsm.co.kr/album/images/1000/40788/4078880.jpg",
-    "source": "",
+    "title": "For You",
+    "singer": "nomaBeats",
+    "albumCover": "https://cdn.pixabay.com/audio/2023/03/04/14-04-28-185_200x200.jpg",
+    "music": "for-you",
     "meta": {
-      "play": 15,
+      "play": 0,
       "heart": 0
     }
   },
   {
-    "title": "Dangerously",
-    "singer": "Charlie Puth",
-    "albumTitle": "Nine Track Mind (Deluxe Edition)",
-    "albumCover": "https://image.bugsm.co.kr/album/images/1000/5277/527746.jpg",
-    "source": "",
+    "title": "Business Time",
+    "singer": "SoulProdMusic",
+    "albumCover": "https://cdn.pixabay.com/audio/2023/03/28/00-34-56-733_200x200.jpg",
+    "music": "business-time",
     "meta": {
-      "play": 8,
+      "play": 0,
       "heart": 0
     }
   }

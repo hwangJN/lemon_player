@@ -7,7 +7,7 @@ const songSchema = new mongoose.Schema({
   title: String,
   singer: String,
   albumCover: String,
-  source: Buffer,
+  music: String,
   meta: {
     play: { type: Number, default: 0, required: true },
     heart: { type: Number, default: 0, required: true },
@@ -51,10 +51,8 @@ Song.find({}, function (err, data) {
   if (err) {
     console.error(err);
   } else {
-    console.log("song :", data.slice(0, 2));
+    //console.log("song :", data.slice(0, 2));
   }
 });
-const sings = Song.find().sort({ "meta.view": -1 });
-console.log("sort!!!!", sings);
 
 export default Song;

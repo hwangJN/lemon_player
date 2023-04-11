@@ -1,0 +1,13 @@
+#mv.music-video 
+    h3 🔥Hot MV
+    .mv-wrap 
+        each thumbnail in videoData
+            .each-mv(id=thumbnail.id)
+                img(src=thumbnail.thumbnailUrl, width='auto', height='100%')
+                span=thumbnail.title
+    #play-video
+        i.fa.fa-x.close 
+        .youtube-wrapper
+            iframe( frameborder='0', allowfullscreen)
+
+
