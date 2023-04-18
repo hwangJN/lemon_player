@@ -8,18 +8,19 @@ block contents
                 span Today's TOP 8
                 button 
                     a(href="#fullchart") 더보기
-            .chart-div 
-                each song, index in songsTop8 
-                    - let songElem = index;
-                    ul(data-song-id=song._id music=song.music onclick="handleSongClick(this)").each-song
-                        li
-                            img(src=`${song.albumCover}`).coverImg
-                            .song-detail
-                                span.rank= index+1
-                                div.songInfo
-                                    span.title= song.title
-                                    span.singer= song.singer
-                            i.fa.fa-play
+            .chart-wrap
+                .chart-div 
+                    each song, index in songsTop8 
+                        - let songElem = index;
+                        ul(data-song-id=song._id music=song.music).each-song
+                            li
+                                img(src=`${song.albumCover}`).coverImg
+                                .song-detail
+                                    span.rank= index+1
+                                    div.songInfo
+                                        span.title= song.title
+                                        span.singer= song.singer
+                                i.fa.fa-play
     include partials/musicvideo
     include partials/fullchart
 

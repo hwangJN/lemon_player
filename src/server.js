@@ -9,6 +9,8 @@ import rootRouter from "./routers/rootRouter";
 import chartRouter from "./routers/chartRouter";
 import "./models/Song.js";
 const cors = require("cors");
+const favicon = require("serve-favicon");
+const path = require("path");
 const app = express();
 
 app.use(cors());
@@ -19,6 +21,7 @@ app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
@@ -37,7 +40,8 @@ app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"));
 app.use("/public", express.static("src"));
-
+app.use(favicon(path.join(__dirname, "favicon.ico")));
+//app.use(favicon(path.join(__dirname, "favicon-32x32.png")));
 app.use("/", rootRouter);
 app.use("/chart", chartRouter);
 /*

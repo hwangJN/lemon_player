@@ -1,23 +1,24 @@
 
 .player-wrap
     #player
-        audio#audio-player(src=`/public/client/source/${songs[1].music}.mp3`, control)
+        audio#audio-player(control)
         .song-info
             .control
-                img(src=`${songs[1].albumCover}`)
+                img(src="/public/client/scss/img/nosong.png")
+                i#prev-btn.fa.fa-backward-step
                 i#play-btn.fa.fa-play
+                i#next-btn.fa.fa-forward-step
+            
+        .prograss
             .detail 
-                span.title=songs[1].title
-                span.singer=songs[1].singer
-                if(currentMusic)
-                    span=currentMusic
+                span.title 재생중인 곡이 없습니다
+                span.singer 곡을 추가해보세요
             .heart-vol 
-                i.fa.fa-heart
+                i.fa-regular.fa-heart.heart-icon
                 .volumn
                     i#mute-toggle.fa.fa-volume-up
                     input#volume-slider(type="range", min="0", max="1", step="0.1", value="0.5")
 
-        .prograss
             .bar
                 .current-bar
             .time

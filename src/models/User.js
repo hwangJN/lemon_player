@@ -1,10 +1,45 @@
 import mongoose from "mongoose";
 const bcrypt = require("bcrypt");
+const path = require("path");
 const fs = require("fs").promises;
+const fs2 = require("fs-extra");
 const userSchema = new mongoose.Schema({
-  id: "string",
-  password: "string",
-  username: "string",
+  id: String,
+  password: String,
+  username: String,
+  //profile: Buffer,
+  profile: {
+    type: String,
+    default: "profile.jpg",
+  },
+  myPL: [
+    {
+      songId: String,
+      albumTitle: String,
+      title: String,
+      singer: String,
+      albumCover: String,
+      music: String,
+      meta: {
+        play: { type: Number, default: 0, required: true },
+        heart: { type: Number, default: 0, required: true },
+      },
+    },
+  ],
+  myHT: [
+    {
+      songId: String,
+      albumTitle: String,
+      title: String,
+      singer: String,
+      albumCover: String,
+      music: String,
+      meta: {
+        play: { type: Number, default: 0, required: true },
+        heart: { type: Number, default: 0, required: true },
+      },
+    },
+  ],
 });
 userSchema.pre("save", async function (next) {
   const user = this;
@@ -30,10 +65,19 @@ async function saveData() {
     // JSON 파싱
     const user = JSON.parse(data);
     // DB에 데이터 저장
-    User.create(user, function (err) {
+    User.create(user, async function (err) {
       if (err) {
         console.error(err);
       } else {
+        // const imagePath = path.join(
+        //   __dirname,
+        //   "../client/scss/img/profile.jpg"
+        // );
+        // const imageBuffer = await fs.readFile(imagePath);
+        // console.log("imageBuffer:", imageBuffer);
+        // user.profile = imageBuffer;
+        // console.log("user:", user);
+        // user.save();
         console.log("Data inserted successfully");
       }
     });
@@ -41,8 +85,9 @@ async function saveData() {
     console.log(err);
   }
 }
+//saveData();
 //데이터 다 지우기
-async function deleteDate() {
+async function deleteData() {
   User.deleteMany({}, function (err) {
     if (err) {
       console.error(err);
@@ -51,15 +96,16 @@ async function deleteDate() {
     }
   });
 }
-//deleteDate();
+//deleteData();
 
 User.find({}, function (err, data) {
   if (err) {
-    console.error(err);
+    //console.error(err);
   } else {
-    //console.log("user :", data);
+    console.log("user : ", data);
   }
 });
+
 //const user = User.find();
 //console.log(user);
 

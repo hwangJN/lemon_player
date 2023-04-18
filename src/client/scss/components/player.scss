@@ -11,10 +11,22 @@
     transform: rotateZ(360deg);
   }
 }
+.player-wrap {
+  //width: 30%;
+
+  @media (max-width: 1200px) {
+    flex-direction: row;
+    width: 85%;
+  }
+  @media (max-width: 900px) {
+    width: 96%;
+  }
+}
 #player {
   background-color: white;
-  width: 260px;
-  height: 315px;
+  width: 230px;
+  //height: 316px;
+  height: calc(7.5vmin * 4 + 40 * 4px - 70px);
   justify-content: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -22,45 +34,130 @@
   padding: 35px;
   @include flex-column-align-center;
   gap: 10px;
+  @media (max-width: 1200px) {
+    flex-direction: row;
+    width: calc(100% - 50px);
+    height: 22vmin;
+    max-height: 120px;
+    padding: 30px 25px;
+    gap: 20px;
+  }
+
   .song-info {
     @include flex-column-align-center;
     width: 100%;
-    gap: 10px;
+    @media (max-width: 1200px) {
+      max-width: 155px;
+      width: 30%;
+      min-width: 95px;
+    }
     .control {
       display: flex;
       justify-content: center;
       position: relative;
+      width: 100%;
       img {
+        width: 85%;
         border-radius: 50%;
         animation: rotateImg 8s linear 0s infinite forwards;
         animation-play-state: paused;
+        @media (max-width: 1200px) {
+          width: 100%;
+        }
       }
-      i {
+      #prev-btn,
+      #play-btn,
+      #next-btn {
         position: absolute;
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 20px;
-        font-size: 20px;
+        //transform: translate(-50%, -50%);
+        cursor: pointer;
+
         border-radius: 50%;
       }
+      #prev-btn,
+      #next-btn {
+        color: #fdb500;
+        height: 10px;
+        &::before {
+          width: 10px;
+          height: 10px;
+        }
+        padding: 10px 10px 15px 10px;
+        background-color: rgba(15, 15, 15, 0.247);
+        @media (max-width: 1200px) {
+          padding: 7px;
+          height: 14px;
+          background-color: rgb(0 0 0 / 49%);
+        }
+      }
+      #prev-btn {
+        left: 25%;
+        transform: translate(-50%, -50%);
+        @media (max-width: 1200px) {
+          left: 0%;
+        }
+      }
+      #play-btn {
+        left: 50%;
+        padding: 20px;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        font-size: 20px;
+        padding: 16px 16px 18px 18px;
+        width: 15px;
+        height: 15px;
+      }
+      #next-btn {
+        right: 25%;
+        transform: translate(50%, -50%);
+        @media (max-width: 1200px) {
+          right: 0%;
+        }
+      }
+    }
+  }
+  .prograss {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    @media (max-width: 1200px) {
+      //width: calc(100% - 170px);
+      flex-grow: 1;
+      gap: 3px;
+      width: 50%;
     }
     .detail {
       @include flex-column-align-center;
       gap: 8px;
       margin-top: 8px;
-      width: 80%;
+      @media (max-width: 1200px) {
+        gap: 4px;
+      }
       .title {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         width: 100%;
         @include text-ellipsis;
         text-align: center;
+        width: 78%;
+        line-height: 24px;
+        @media (max-width: 1200px) {
+          font-size: 14px;
+          line-height: 16px;
+        }
       }
       .singer {
         font-size: 13px;
         color: gray;
+        width: 78%;
+        text-align: center;
+        @media (max-width: 1200px) {
+          font-size: 11px;
+          line-height: 13px;
+        }
       }
     }
     .heart-vol {
@@ -71,9 +168,14 @@
       i {
         font-size: 20px;
         color: rgb(255, 140, 0);
+        cursor: pointer;
+        @media (max-width: 900px) {
+          font-size: 14px;
+        }
       }
       .volumn {
         position: relative;
+        cursor: pointer;
         #volume-slider {
           -webkit-appearance: none;
           background: transparent;
@@ -83,8 +185,8 @@
           transform-origin: center right;
           transform: rotate(270deg) translate(100%, 0);
           position: absolute;
-          top: -18px;
-          right: 10px;
+          top: -16px;
+          right: 11px;
           background: linear-gradient(
             to right,
             #ffe283 0%,
@@ -108,28 +210,37 @@
             cursor: pointer;
             border-radius: 5px;
           }
+          @media (max-width: 1200px) {
+            width: 60px;
+          }
+          @media (max-width: 900px) {
+            top: -11px;
+            right: 6px;
+          }
         }
       }
     }
-  }
-  .prograss {
-    width: 100%;
-    margin-top: 5px;
     .bar {
       position: relative;
       width: 100%;
       height: 8px;
-      background-color: rgba(255, 255, 188, 0.878);
+      //background-color: rgba(255, 255, 188, 0.878);
+      background-color: $mainColor;
       border-radius: 10px;
       overflow: hidden;
       margin-bottom: 8px;
+      cursor: pointer;
       .current-bar {
-        background-color: yellow;
+        //background-color: yellow;
+        background-color: #fdb500;
         position: absolute;
         height: 100%;
         width: 0%;
         top: 0;
         border-radius: 10px;
+      }
+      @media (max-width: 900px) {
+        margin-bottom: 0px;
       }
     }
 
@@ -139,6 +250,9 @@
       font-size: 13px;
       color: rgb(48, 48, 48);
       font-weight: 500;
+      @media (max-width: 900px) {
+        font-size: 11px;
+      }
     }
   }
 }

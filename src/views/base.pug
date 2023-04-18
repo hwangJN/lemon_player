@@ -6,11 +6,16 @@ html(lang="ko")
         link(href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css', rel='stylesheet', type='text/css')
         link(rel="stylesheet", href="/static/css/styles.css")
         script(src="https://kit.fontawesome.com/fe393b8697.js")
-        
+        link(rel='icon', type='image/png', sizes='32x32', href='/public/client/scss/img/favicon-32x32.png')
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0")
     body
         include partials/header            
         #home.main-wrap
             block contents
             include partials/footer
+            .mobile-header
+                .header-btn
+                    i.fa.fa-bars
+                .logo
+                    span LEMON
         script(src="/static/js/main.js")
-    

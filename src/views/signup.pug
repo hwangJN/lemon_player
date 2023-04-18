@@ -1,0 +1,13 @@
+extends base
+
+block contents 
+    .login
+        .login-wrap
+            .info
+                h3 Sign Up
+            form(action='/register', method='POST').login-form
+                input(type='text', autocomplete="off", placeholder="ID", name='id', minlength ="5" maxlength="12")
+                input(type='password', placeholder="PASSWORD",name='password' minlength ="6" maxlength="12")
+                input(type='text', autocomplete="off", placeholder="닉네임 (2~7자)", name='NickName' minlength ="2" maxlength="7")
+                span.error-message=errorMessage
+                button(type='submit').submit-btn Sign Up

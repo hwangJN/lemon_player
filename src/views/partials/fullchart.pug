@@ -1,35 +1,26 @@
 
-- const thItem = ["Rank", "Song", "Play","heart", "Listen"];
+- const thItem = ["Rank", "Song", "Play","Heart", "Listen"];
 #fullchart 
     .chart-wrap 
         h1 🍋 TOP 10 🍋 
-        table
-            colgroup 
-                col(style="width:13%")
-                col(style="width:50%")
-                col(style="width:13%")
-                col(style="width:13%")
-                col(style="width:13%")
-            thead 
-                tr
-                    each category in thItem 
-                        th=category
-            tbody 
-                each song, index in songsTop10 
-                    tr(data-song-id=song._id music=song.music onclick="handleSongClick(this)").each-song
-                        td.rank
-                            span.rank= index+1
-                        td.song
-                            img(src=`${song.albumCover}`).coverImg
-                            div.songInfo
-                                span.title= song.title
-                                span.singer= song.singer
-                        td 
-                            span.playcnt= song.meta.play
-                        td 
-                            span.heartcnt= song.meta.heart
-                        td 
-                            i.fa.fa-play(style="cursor:pointer")
-
+        .full-chart-div
+            ul.chart-header 
+                each category in thItem 
+                        li(class=`${category}`)=category
+            each song, index in songsTop10 
+                ul(data-song-id=song._id music=song.music).each-song
+                    li.Rank
+                        span.rank= index+1
+                    li.Song
+                        img(src=`${song.albumCover}`).coverImg
+                        div.songInfo
+                            span.title= song.title
+                            span.singer= song.singer
+                    li.Play
+                        span.playcnt= song.meta.play
+                    li.Heart
+                        span.heartcnt= song.meta.heart
+                    li.Listen
+                        i.fa.fa-play(style="cursor:pointer")
 
 

@@ -49,7 +49,16 @@
         background-color: $mainColor;
         height: 45px;
         margin-top: 5px;
+        font-size: 15px;
         font-weight: 500;
+        cursor: pointer;
+      }
+      a {
+        line-height: 45px;
+        text-align: center;
+        .submit-btn {
+          font-size: 15px;
+        }
       }
       input {
         border: 1px solid #9090906b;

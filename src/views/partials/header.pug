@@ -4,54 +4,74 @@ script.
         section.scrollIntoView({ behavior: "smooth" });
     }
 header.header
-    a(href="/").logo
-        img(src="/public/client/scss/img/lemon.png", alt='logo')
-        span LEMON
+    .header-wrap
+        .main-category.on
+            a(href="/").logo
+                img(src="/public/client/scss/img/lemon.png", alt='logo')
+                span LEMON
+            i.fa.fa-x.close
+            a(href="/mypage")
+                .user-profile
+                    if (loggedIn)
+                        img(src=`uploads/${loggedInUser.profile}`, alt='profile').profile-img
+                    else 
+                        img(src=`uploads/profile.jpg`, alt='profile').profile-img
+                    if (loggedIn)
+                        span=loggedInUser.username
+                    else
+                        span 로그인이 필요합니다
+            .nav-menu
+                a(href="/")
+                    ul
+                        li
+                            i.fa.fa-home
+                        li HOME
+                ul.playlist-btn
+                    li
+                        i.fa.fa-list-ul
+                    li Play List
+                a(href="/mypage")
+                    ul
+                        li
+                            i.fa.fa-user
+                        li My Page
+                a(href="#fullchart")
+                    ul
+                        li
+                            i.fa.fa-chart-line
+                        li Chart
+            .new 
+                span NEW
+                a(href="#newestAlbum")
+                    ul 
+                        li
+                            i.fa.fa-compact-disc 
+                        li Album
+                ul 
+                    li
+                        i.fa.fa-video 
+                    li 
+                        a(href="#mv") Music Video 
 
-    .user-profile
-        img(src="/public/client/scss/img/profile.jpg", alt='profile').profile-img
-        if (loggedIn)
-            span=loggedInUser.username
-        else
-            span 로그인이 필요합니다
-    .nav-menu
-        a(href="#home")
-            ul
-                li
-                    i.fa.fa-home
-                li HOME
-        ul
-            li
-                i.fa.fa-list-ul
-            li Play List
-        ul
-            li
-                i.fa.fa-user
-            li My Page
-        a(href="#fullchart")
-            ul
-                li
-                    i.fa.fa-chart-line
-                li Chart
-    .new 
-        span NEW
-        ul 
-            li
-                i.fa.fa-compact-disc 
-            li Album
-        ul 
-            li
-                i.fa.fa-video 
-            li 
-                a(href="#mv") Music Video 
+            .logout 
+                i.fa.fa-arrow-right-to-bracket
+                if (loggedIn)
+                    form(action='/logout', method='POST')
+                        button(type='submit') Logout
+                else
+                    a(href='/login') 
+                        button LogIn
+        .playlist-wrap.off 
+            .playlist-header 
+                i.fa.fa-arrow-left.back
+                h1 My Playlist
+                i.fa.fa-x.close
+            if (!loggedIn)
+                span.explanation 로그인 후 나만의 플레이리스트를 저장해보세요
+            include playlist
+            .control-btns 
+                i#sub-prev-btn.fa.fa-backward-step
+                i#sub-play-btn.fa.fa-play
+                i#sub-next-btn.fa.fa-forward-step
 
-    .logout 
-        i.fa.fa-arrow-right
-        if (loggedIn)
-            form(action='/logout', method='POST')
-                button(type='submit') Logout
-        else
-            a(href='/login') 
-                button LogIn
-        
 

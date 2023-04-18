@@ -1,0 +1,152 @@
+.mypage-wrap {
+  width: 90%;
+  max-width: 650px;
+  margin: 115px auto;
+  //height: 100%;
+  display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  gap: 20px;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+  }
+  form,
+  .heart-list {
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+    border-radius: 30px;
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+    flex-shrink: 0;
+  }
+  form {
+    align-items: center;
+    gap: 25px;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .profile-edit {
+      position: relative;
+      label {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        position: absolute;
+        bottom: 7%;
+        right: 3%;
+        background: white;
+        padding: 8px;
+        border-radius: 50%;
+        i {
+          font-size: 30px;
+        }
+      }
+      .img-input {
+        display: none;
+      }
+      .preview {
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+    .text-input {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .id-div,
+      .nickname-div {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        label {
+          font-size: 14px;
+          font-weight: 600;
+        }
+        input[type="text" i] {
+          border-radius: 13px;
+          font-weight: 500;
+          border: 1px solid gray;
+          font-size: 14px;
+          padding: 5px 12px;
+          height: 30px;
+          &:focus {
+            outline: $mainColor;
+          }
+        }
+      }
+    }
+    button {
+      border: 0;
+      width: 85px;
+      height: 45px;
+      background-color: $mainColor;
+      border-radius: 15px;
+      font-weight: 600;
+      color: #3a3939d1;
+    }
+  }
+  .heart-list {
+    height: 424.8px;
+    padding-bottom: 20px;
+    h2 {
+      font-size: 16.5px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .heart-song-wrap {
+      width: 85%;
+      margin: 25px auto;
+      height: 100%;
+      overflow: auto;
+      -ms-overflow-style: none; /* 인터넷 익스플로러 */
+      scrollbar-width: none; /* 파이어폭스 */
+      &::-webkit-scrollbar {
+        display: none; /* 크롬, 사파리, 오페라, 엣지 */
+      }
+      .each-heart-song {
+        &:not(:last-of-type) {
+          margin-bottom: 13px;
+        }
+        li {
+          height: 40px;
+          display: flex;
+          gap: 10px;
+          img {
+            height: 100%;
+          }
+          .song-detail {
+            width: calc(100% - 50px);
+            .songInfo {
+              display: flex;
+              flex-direction: column;
+              gap: 3px;
+              .title,
+              .signer {
+                @include text-ellipsis;
+              }
+              .title {
+                font-weight: 500;
+                font-size: 15px;
+                width: 100%;
+                line-height: 22px;
+              }
+              .singer {
+                font-size: 13px;
+                color: #0e0e0eb8;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

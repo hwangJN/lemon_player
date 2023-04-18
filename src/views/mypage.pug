@@ -1,0 +1,33 @@
+extends base
+
+block contents 
+    .mypage-wrap 
+        form(action="edit", method="post", enctype='multipart/form-data')
+            h2 프로필 수정
+            .profile-edit
+                label(for='profile', class='custom-file-label')
+                    i.fa.fa-camera
+                input(type='file', id="profile" name='profile',accept='image/*').img-input
+                img(src=`uploads/${user.profile}`, alt='Profile').preview
+            .text-input
+                .id-div
+                    label(for="id") 아이디
+                    input(type="text", id="id", name="id", value=user.id, disabled) 
+                .nickname-div
+                    label(for="username") 닉네임
+                    input(type="text", id="username", name="username", value=user.username)
+            button(type="submit") 수정하기
+        .heart-list 
+            h2=`${user.username} 님의 💛 Songs`
+            .heart-song-wrap 
+                each song in user.myHT 
+                    ul.each-heart-song
+                        li
+                            img(src=`${song.albumCover}`).coverImg
+                            .song-detail
+                                div.songInfo
+                                    span.title= song.title
+                                    span.singer= song.singer
+
+         
+

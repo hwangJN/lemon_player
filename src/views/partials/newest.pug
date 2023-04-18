@@ -1,17 +1,9 @@
-script.
-    function handleSongClick(songElem) {
-        const songId = songElem.dataset.songId;
-        fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ songId }),
-        }).then((response) => response.json()).then((data) => {});   
-    }
-.newestAlbum 
+
+#newestAlbum.newestAlbum 
     h1 💿 최신앨범
     div.new-album
         each song, index in songs
-            ul(data-song-id=song._id music=song.music onclick="handleSongClick(this)").each-song
+            ul(data-song-id=song._id music=song.music).each-song
                 li
                     img(src=`${song.albumCover}`).coverImg
                     .song-detail                            

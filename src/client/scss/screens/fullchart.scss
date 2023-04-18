@@ -1,15 +1,125 @@
 #fullchart {
   width: 90%;
   margin: 0 auto;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-top: 30px;
+  border-radius: 10px;
+  @media (max-width: 900px) {
+    width: 100%;
+    padding-top: 60px;
+  }
   .chart-wrap {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
     h1 {
       font-size: 26px;
       font-weight: 600;
       text-align: center;
+    }
+    .full-chart-div {
+      display: flex;
+      margin-top: 30px;
+      flex-direction: column;
+      background-color: white;
+      .chart-header {
+        display: flex;
+        gap: 0;
+        margin-bottom: 0;
+        background-color: rgb(255, 237, 123);
+        height: 45px;
+
+        li {
+          text-align: center;
+          font-weight: 600;
+        }
+      }
+      .Rank,
+      .Play,
+      .Heart,
+      .Listen {
+        width: 14%;
+        text-align: center;
+        font-weight: 500;
+        @media (max-width: 900px) {
+          font-size: 12.5px;
+        }
+        @media (max-width: 400px) {
+          font-size: 11px;
+        }
+      }
+      .Rank {
+        font-weight: 600;
+        @media (max-width: 900px) {
+          font-size: 14px;
+        }
+      }
+      .Song {
+        width: 44%;
+        @media (max-width: 900px) {
+          font-size: 12.5px;
+        }
+        @media (max-width: 400px) {
+          font-size: 11px;
+        }
+      }
+
+      .Rank,
+      .Listen {
+        flex-grow: 1;
+      }
+      .each-song {
+        height: 70px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        &:not(:last-of-type) {
+          border-bottom: 1px solid #0000001c;
+        }
+        &:hover {
+          background-color: whitesmoke;
+        }
+        .Song {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-left: 10px;
+          .coverImg {
+            height: 45px;
+            width: 45px;
+          }
+          .songInfo {
+            display: flex;
+            flex-direction: column;
+            width: calc(100% - 65px);
+            .title {
+              display: block;
+              width: 100%;
+              font-weight: 500;
+              line-height: 20px;
+              @include text-ellipsis;
+              margin-bottom: 7px;
+              font-size: 16px;
+              @media (max-width: 900px) {
+                font-size: 14px;
+              }
+            }
+            .singer {
+              display: block;
+              line-height: 10px;
+              font-size: 12px;
+              color: rgba(86, 86, 86, 0.807);
+              @media (max-width: 900px) {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
     }
     table {
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -17,9 +127,15 @@
       //border-style: hidden;
       //box-shadow: 0 0 0 1px #000;
       margin: 30px auto;
-      width: 80%;
+      width: 100%;
       background-color: white;
       //border-radius: 20px;
+      @media (max-width: 768px) {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
       thead {
         background-color: rgb(255, 237, 123);
         border-radius: 10px 10px 0 0;
