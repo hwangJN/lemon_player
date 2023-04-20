@@ -102,7 +102,7 @@ User.find({}, function (err, data) {
   if (err) {
     //console.error(err);
   } else {
-    console.log("user : ", data);
+    //console.log("user : ", data);
   }
 });
 

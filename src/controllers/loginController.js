@@ -111,17 +111,13 @@ export const getMypage = async (req, res) => {
 };
 
 export const EditMyInfo = async (req, res) => {
-  console.log("dk!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
   const { username } = req.body;
-  console.log(req.body);
   try {
     const user = await User.findById(req.session.user._id);
     user.username = username;
     if (req.file) {
       user.profile = req.file.filename;
     }
-    console.log("usesr", user);
-    //user.profile_pic = `/images/profiles/${profile_pic.filename}`;
     await user.save();
     req.session.user = user;
     res.redirect("/");

@@ -31,7 +31,6 @@ const storage = multer.diskStorage({
 });
 //var upload = multer({ dest: "public/client/scss/img/Profile/" });
 const upload = multer({ storage: storage });
-console.log(upload);
 const rootRouter = express.Router();
 
 rootRouter.get("/", home);

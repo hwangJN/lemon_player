@@ -12,7 +12,6 @@ async function saveData() {
   try {
     const data = await fs.readFile(dataFilePath);
     const mv = JSON.parse(data);
-    console.log(mv);
     MusicVideo.create(mv, function (err) {
       if (err) {
         console.error(err);
