@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 const fs = require("fs").promises;
-console.log("!!");
 const MVSchema = new mongoose.Schema({
   id: String,
 });

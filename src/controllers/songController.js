@@ -4,10 +4,9 @@ import MusicVideo from "../models/MV";
 
 const { google } = require("googleapis");
 
-// Set up a YouTube API client
 const youtube = google.youtube({
   version: "v3",
-  auth: process.env.YOUTUBE_API_KEY, // replace with your actual API key
+  auth: process.env.YOUTUBE_API_KEY,
 });
 
 export const home = async (req, res) => {
@@ -15,7 +14,6 @@ export const home = async (req, res) => {
     const songs = await Song.find({}).limit(6); // 최신 앨범
     const songsTop8 = await Song.find({}).sort({ "meta.play": -1 }).limit(8); // 조회순 top10
     const songsTop10 = await Song.find({}).sort({ "meta.play": -1 }).limit(10); // 조회순 top10
-
     //뮤직비디오 썸네일+title
     const MVs = await MusicVideo.find({});
     const promises = MVs.map(async (video) => {
@@ -52,7 +50,6 @@ export const getData = async (req, res) => {
     songsTop10,
   };
   if (req.session.loggedIn) {
-    //User.findById(req.session.user._id);
     data.myPL = req.session.user.myPL;
     data.myHT = req.session.user.myHT;
   }

@@ -205,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //음악 좋아요(하트아이콘)
     heartIcon.addEventListener("click", () => {
-      console.log("클릭");
       //하트 리스트에 없을 때
       if (heartIcon.classList.contains("fa-regular")) {
         heartIcon.classList.remove("fa-regular");
@@ -234,8 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
           myHEART.push({
             title: title.innerHTML,
           });
-          console.log("성공");
-          console.log(myHEART);
         } else {
           throw new Error("Error adding song to playlist");
         }
@@ -251,7 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }).then((response) => {
         if (response.ok) {
           myHEART = myHEART.filter((song) => song.title !== title.innerHTML);
-          console.log("지우기 성공");
         } else {
           throw new Error("Error adding song to playlist");
         }
@@ -343,7 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
           data.myHT.forEach((song, index) => {
             myHEART.push(song);
           });
-          console.log("myHEART : ", myHEART);
         }
       } else {
         console.error("Error: " + xhr.status);
@@ -600,7 +595,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const fileInput = document.querySelector(".img-input");
     const thumbnail = document.querySelector(".preview");
     fileInput.addEventListener("change", function () {
-      console.log("qusrud");
       const file = this.files[0];
       if (!file) {
         return;

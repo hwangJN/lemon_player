@@ -13,12 +13,12 @@ const favicon = require("serve-favicon");
 const path = require("path");
 const app = express();
 
-// let corsOptions = {
-//   origin: "https://lemon-player.fly.dev/",
-//   credentials: true,
-// };
+let corsOptions = {
+  origin: "https://lemon-player.fly.dev",
+  credentials: true,
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 const logger = morgan("dev");
 app.set("view engine", "pug");
@@ -49,8 +49,5 @@ app.use("/public", express.static("src"));
 //app.use(favicon(path.join(__dirname, "favicon-32x32.png")));
 app.use("/", rootRouter);
 app.use("/chart", chartRouter);
-/*
-Add more routers here!
-*/
 
 export default app;

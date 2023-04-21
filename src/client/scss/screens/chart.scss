@@ -50,14 +50,10 @@
   }
 }
 .chart-div {
-  //height: 50vh;
-  //background-color: rgba(222, 222, 222, 0.941);
   display: flex;
-  //width: 680px;
   width: 100%;
   flex-direction: column;
   flex-wrap: wrap;
-  //height: 350px;
   height: calc(7.5vmin * 4 + 40 * 4px);
   @media (max-width: 670px) {
     height: calc(10.5vmin * 4 + 40 * 4px);
@@ -78,7 +74,6 @@
       width: 54%;
     }
     li {
-      //height: 55px;
       height: 7.5vmin;
       @media (max-width: 670px) {
         height: 10.5vmin;
@@ -88,16 +83,13 @@
       gap: 10px;
       width: 100%;
       .song-detail {
-        //width: 200px;
         width: 40%;
-
         flex-grow: 1;
         height: 100%;
         display: flex;
         gap: 10px;
         .rank {
           padding-top: 7px;
-
           text-align: center;
           @media (max-width: 500px) {
             font-size: 3vmin;
@@ -107,7 +99,6 @@
           display: flex;
           flex-direction: column;
           flex-grow: 1;
-          //width: 180px;
           width: calc(100% - 15px);
           @media (max-width: 900px) {
             padding-top: 7px;

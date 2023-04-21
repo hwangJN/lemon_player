@@ -7,7 +7,6 @@ const userSchema = new mongoose.Schema({
   id: String,
   password: String,
   username: String,
-  //profile: Buffer,
   profile: {
     type: String,
     default: "profile.jpg",
@@ -85,7 +84,7 @@ async function saveData() {
     console.log(err);
   }
 }
-//saveData();
+//
 //데이터 다 지우기
 async function deleteData() {
   User.deleteMany({}, function (err) {
@@ -100,13 +99,10 @@ async function deleteData() {
 
 User.find({}, function (err, data) {
   if (err) {
-    //console.error(err);
+    console.error(err);
   } else {
     //console.log("user : ", data);
   }
 });
-
-//const user = User.find();
-//console.log(user);
 
 export default User;
