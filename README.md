@@ -1,16 +1,24 @@
-# Melon Contest Blueprint
+# 🍋 LEMON PLAYER
+🔗 [웹페이지 바로가기](https://lemon-player.fly.dev/)
 
-## How to run?
 
-- Open this folder on VSCode.
-- Click on `View` -> `Terminal`.
-- Run `npm i`.
-- Start `mongodb`.
-- Change the `COOKIE_SECRET` on the `.env` file.
-- Run `npm run dev:server`.
-- Open another terminal and run `npm run dev:assets`.
+## 프로젝트 소개 & 기능
+- 뮤직 플레이리스트 & 플레이어 구현 웹사이트입니다
+- 로그인된 유저는 자신만의 플레이리스트를 가질 수 있습니다
+- 전체 반복 재생 & 랜덤 재생이 가능합니다
+- 재생 수를 기반으로 한 순위 차트를 확인할 수 있습니다
+- 유저 프로필 수정이 가능합니다
+- 등록된 뮤직비디오를 감상할 수 있습니다
+- 반응형 웹페이지로 제작하였습니다
 
-## How to deploy?
+## 제작 동기
+- 노마드코더 클론 코딩 챌린지 참여(23.03.30 ~ 23.04.21 3주간)
+- 새로운 기술 스택 도전
 
-- Run `npm run build`.
-- Run `npm start`.
+## Tech Stack
+### Back-end
+
+<img src="https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white"> <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white">
+
+### Front-end
+<img src="https://img.shields.io/badge/pug-A86454?style=for-the-badge&logo=pug&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
