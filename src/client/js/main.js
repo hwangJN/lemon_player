@@ -90,11 +90,13 @@ document.addEventListener("DOMContentLoaded", function () {
         nextSong();
       }
     });
+
     subprevBtn.addEventListener("click", () => {
       if (audio.src) {
         prevSong();
       }
     });
+
     subnextBtn.addEventListener("click", () => {
       if (audio.src) {
         nextSong();
@@ -637,6 +639,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const close = document.querySelector(".playlist-header .close");
   const header = document.querySelector(".header");
   const headerLink = header.querySelectorAll(".main-category.on a");
+
   if (menuBtn) {
     menuBtn.addEventListener("click", () => {
       header.classList.add("on");
@@ -664,6 +667,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", handleResize);
 
   //모바일 브라우저 100vh 문제
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
+  //let vh = window.innerHeight;
+  //document.documentElement.style.setProperty("--vh", `${vh}px`);
 });

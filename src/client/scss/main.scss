@@ -20,7 +20,9 @@
     height: 100%;
   }
 }
-
+:root {
+  --vh: 100vh;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -40,7 +42,7 @@ body {
 .header {
   z-index: 50;
   position: fixed;
-  height: calc(100vh - 40px);
+  height: calc(var(--vh) - 40px);
   width: 220px;
   padding: 20px 20px;
   background-color: $mainColor;
