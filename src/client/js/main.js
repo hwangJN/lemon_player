@@ -3,6 +3,7 @@ export let musicList = []; // 밑에서 객체 배열로 저장
 
 document.addEventListener("DOMContentLoaded", function () {
   if (window.location.pathname === "/") {
+    let shuffle = false;
     const player = document.querySelector("#player");
     const audio = player.querySelector("#audio-player");
     const albumCover = player.querySelector("img");
@@ -18,7 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const subprevBtn = document.querySelector("#sub-prev-btn");
     const subplayBtn = document.querySelector("#sub-play-btn");
     const subnextBtn = document.querySelector("#sub-next-btn");
-
+    const modeIcon = document.querySelector(
+      "#player .prograss .heart-vol .mode-icon"
+    );
     const heartIcon = document.querySelector(
       "#player .prograss .heart-vol .heart-icon"
     );
@@ -26,12 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let volumeSlider = document.getElementById("volume-slider");
 
     //------------뮤직 플레이어 setting-----------//
-    //개별 audio duration load
     if (!audio.src) {
       albumCover.src = "/public/client/scss/img/nosong.png";
       currentTimeInfo.style.display = "none";
     }
 
+    //개별 audio duration load
     audio.addEventListener("loadedmetadata", function () {
       currentTimeInfo.style.display = "block";
       let duration = audio.duration;
@@ -221,6 +224,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     });
+
+    modeIcon.addEventListener("click", () => {
+      if (shuffle) {
+        modeIcon.classList.add("fa-repeat");
+        modeIcon.classList.remove("fa-shuffle");
+        shuffle = !shuffle;
+      } else {
+        modeIcon.classList.remove("fa-repeat");
+        modeIcon.classList.add("fa-shuffle");
+        shuffle = !shuffle;
+      }
+    });
     function AddHeart() {
       const songID = audio.getAttribute("data-song-id");
       // 유저 db - playlist에 곡 추가
@@ -297,18 +312,28 @@ document.addEventListener("DOMContentLoaded", function () {
     // 강제 이전곡 재생(PL)
     function prevSong() {
       let setIndex = null;
+      let prevSongIndex = null;
       if (currentSongIndex === 0) {
         setIndex = myPLAYLIST.length;
       } else {
         setIndex = currentSongIndex;
       }
-      const prevSongIndex = (setIndex - 1) % myPLAYLIST.length;
+      if (shuffle) {
+        prevSongIndex = Math.floor(Math.random() * myPLAYLIST.length);
+      } else {
+        prevSongIndex = (setIndex - 1) % myPLAYLIST.length;
+      }
       changeMusicInfo(prevSongIndex);
       currentSongIndex = prevSongIndex;
     }
     // 강제 다음곡 재생(PL)
     function nextSong() {
-      const nextSongIndex = (currentSongIndex + 1) % myPLAYLIST.length;
+      let nextSongIndex = null;
+      if (shuffle) {
+        nextSongIndex = Math.floor(Math.random() * myPLAYLIST.length);
+      } else {
+        nextSongIndex = (currentSongIndex + 1) % myPLAYLIST.length;
+      }
       currentSongIndex = nextSongIndex;
       changeMusicInfo(nextSongIndex);
     }
