@@ -43,7 +43,7 @@
 ### Front-end
 <img src="https://img.shields.io/badge/pug-A86454?style=for-the-badge&logo=pug&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
 
-## 파일 구조
+## 📂파일 구조
 ```
 📦src
  ┣ 📂client
