@@ -38,6 +38,10 @@ body {
   color: $textColor;
   //margin: 20px 40px;
   display: flex;
+  &.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+  }
 }
 .header {
   z-index: 50;
