@@ -43,5 +43,81 @@
 ### Front-end
 <img src="https://img.shields.io/badge/pug-A86454?style=for-the-badge&logo=pug&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
 
+## 파일 구조
+```
+📦src
+ ┣ 📂client
+ ┃ ┣ 📂js
+ ┃ ┃ ┣ 📜api.js
+ ┃ ┃ ┣ 📜header.js
+ ┃ ┃ ┣ 📜main.js
+ ┃ ┃ ┣ 📜mv.js
+ ┃ ┃ ┗ 📜mypage.js
+ ┃ ┣ 📂scss
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┃ ┗ 📜player.scss
+ ┃ ┃ ┣ 📂config
+ ┃ ┃ ┃ ┣ 📜_reset.scss
+ ┃ ┃ ┃ ┗ 📜_variables.scss
+ ┃ ┃ ┣ 📂img
+ ┃ ┃ ┃ ┣ 📂Profile
+ ┃ ┃ ┃ ┣ 📜favicon-32x32.png
+ ┃ ┃ ┃ ┣ 📜LEMON-logo.png
+ ┃ ┃ ┃ ┣ 📜lemon.png
+ ┃ ┃ ┃ ┗ 📜nosong.png
+ ┃ ┃ ┣ 📂screens
+ ┃ ┃ ┃ ┣ 📜chart.scss
+ ┃ ┃ ┃ ┣ 📜fullchart.scss
+ ┃ ┃ ┃ ┣ 📜login.scss
+ ┃ ┃ ┃ ┣ 📜musicvideo.scss
+ ┃ ┃ ┃ ┗ 📜mypage.scss
+ ┃ ┃ ┗ 📜main.scss
+ ┃ ┗ 📂source
+ ┃ ┃ ┣ 📜awaken-136824.mp3
+ ┃ ┃ ┣ 📜beautiful-trip.mp3
+ ┃ ┃ ┣ 📜business-time.mp3
+ ┃ ┃ ┣ 📜cinematic-documentary-piano.mp3
+ ┃ ┃ ┣ 📜dark-mystery-trailer-taking-our-time.mp3
+ ┃ ┃ ┣ 📜for-you.mp3
+ ┃ ┃ ┣ 📜inspiring-dream.mp3
+ ┃ ┃ ┣ 📜lifelike.mp3
+ ┃ ┃ ┣ 📜mirai.mp3
+ ┃ ┃ ┣ 📜playful.mp3
+ ┃ ┃ ┗ 📜stomps-and-claps-percussion-and-rhythm.mp3
+ ┣ 📂controllers
+ ┃ ┣ 📜loginController.js
+ ┃ ┗ 📜songController.js
+ ┣ 📂models
+ ┃ ┣ 📂data
+ ┃ ┃ ┣ 📜MV.json
+ ┃ ┃ ┣ 📜Song.json
+ ┃ ┃ ┗ 📜User.json
+ ┃ ┣ 📜MV.js
+ ┃ ┣ 📜Song.js
+ ┃ ┗ 📜User.js
+ ┣ 📂routers
+ ┃ ┣ 📜chartRouter.js
+ ┃ ┗ 📜rootRouter.js
+ ┣ 📂views
+ ┃ ┣ 📂partials
+ ┃ ┃ ┣ 📜footer.pug
+ ┃ ┃ ┣ 📜fullchart.pug
+ ┃ ┃ ┣ 📜header.pug
+ ┃ ┃ ┣ 📜musicvideo.pug
+ ┃ ┃ ┣ 📜newest.pug
+ ┃ ┃ ┣ 📜player.pug
+ ┃ ┃ ┗ 📜playlist.pug
+ ┃ ┣ 📜base.pug
+ ┃ ┣ 📜home.pug
+ ┃ ┣ 📜login.pug
+ ┃ ┣ 📜mypage.pug
+ ┃ ┗ 📜signup.pug
+ ┣ 📜android-icon-36x36.png
+ ┣ 📜db.js
+ ┣ 📜favicon.ico
+ ┣ 📜init.js
+ ┣ 📜middlewares.js
+ ┗ 📜server.js
+```
 ## 🎶소스
 - [Pixabay](https://pixabay.com/ko/music/)
