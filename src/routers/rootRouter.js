@@ -35,7 +35,7 @@ const rootRouter = express.Router();
 
 rootRouter.get("/", home);
 rootRouter.get("/data", getData);
-rootRouter.post("/", songClick);
+rootRouter.post("/songclick", songClick);
 rootRouter.post("/delete", songDelete);
 rootRouter.post("/heart", songHeart);
 rootRouter.get("/login", login);

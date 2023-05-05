@@ -60,21 +60,37 @@ export const songClick = async (req, res) => {
   try {
     const songId = req.body.songId;
     //클릭(재생) 수 update
+    // const updatedSong = await Song.findByIdAndUpdate(
+    //   songId,
+    //   {
+    //     $inc: { "meta.play": 1 },
+    //   },
+    //   (err, music) => {
+    //     console.log(music);
+    //     if (err) {
+    //       console.log(err);
+    //       res.status(500).send("Internal server error");
+    //     } else {
+    //       console.log(music);
+    //       res.json(music);
+    //     }
+    //   }
+    // )
+    // .exec()
+    // .then((music) => {
+    //   console.log(music);
+    // })
+    // .catch((error) => {
+    //   res.status(500).send("Internal server error");
+    // });
+    const updatesong = await Song.findById(songId);
+    if (!updatesong) {
+      return res.sendStatus(404);
+    }
+    updatesong.meta.play += 1;
+    await updatesong.save();
 
-    const updatedSong = await Song.findByIdAndUpdate(
-      songId,
-      { $inc: { "meta.play": 1 } },
-      (err, music) => {
-        if (err) {
-          console.log(err);
-          res.status(500).send("Internal server error");
-        } else {
-          //console.log(music);
-        }
-      }
-    );
     const song = await Song.findById(songId);
-
     //클릭하는 곡 나의 플리에 저장
     if (req.session.loggedIn) {
       User.findById(req.session.user._id, (err, user) => {
@@ -93,13 +109,13 @@ export const songClick = async (req, res) => {
         }
       });
     }
-
-    res.json(updatedSong);
+    return res.sendStatus(200);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error updating song" });
   }
 };
+
 export const songHeart = async (req, res) => {
   try {
     const { songID, mode } = req.body;

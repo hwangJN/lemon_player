@@ -105,8 +105,6 @@ function ActiveSong(element) {
 }
 //플레이어 음악 change 함수
 function changeMusicInfo(index) {
-  console.log(index);
-  //
   audio.src = `/public/client/source/${myPLAYLIST[index].music}.mp3`;
   albumCover.src = `${myPLAYLIST[index].albumCover}`;
   title.innerHTML = myPLAYLIST[index].title;
@@ -332,7 +330,7 @@ function handleSongClick(songElem) {
     ".header .header-wrap .playlist-wrap .playlist"
   );
   // 유저 db - playlist에 곡 추가
-  fetch("/", {
+  fetch("/songclick", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ songId }),
