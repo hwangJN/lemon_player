@@ -15,7 +15,7 @@ block contents
                     input(type="text", id="id", name="id", value=user.id, disabled) 
                 .nickname-div
                     label(for="username") 닉네임
-                    input(type="text", id="username", name="username", value=user.username)
+                    input(type="text", id="username", name="username", value=user.username autocomplete="off")
             button(type="submit") 수정하기
         .heart-list 
             h2=`${user.username} 님의 💛 Songs`

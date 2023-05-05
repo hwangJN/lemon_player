@@ -79,7 +79,7 @@ function DeleteHeart() {
     if (response.ok) {
       myHEART = myHEART.filter((song) => song.title !== title.innerHTML);
     } else {
-      throw new Error("Error adding song to playlist");
+      throw new Error("Error deleting song to playlist");
     }
   });
 }
@@ -515,7 +515,7 @@ if (window.location.pathname === "/") {
     audio.volume = volumeSlider.value;
     muteToggle.classList.add("fa-volume-mute");
     muteToggle.classList.remove("fa-volume-up");
-    vol_slider.style.background =
+    volumeSlider.style.background =
       "linear-gradient(to right,  rgb(236, 236, 236) 0%, rgb(236, 236, 236) 100%)";
   });
 

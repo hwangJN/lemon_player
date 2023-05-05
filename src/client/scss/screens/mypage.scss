@@ -47,6 +47,7 @@
         background: white;
         padding: 8px;
         border-radius: 50%;
+        cursor: pointer;
         i {
           font-size: 30px;
         }
@@ -98,6 +99,7 @@
       background-color: $mainColor;
       border-radius: 15px;
       font-weight: 600;
+      cursor: pointer;
       color: #3a3939d1;
     }
   }
