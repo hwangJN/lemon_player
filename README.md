@@ -12,33 +12,64 @@
 - Node, MongoDB 관련 개발 경험을 쌓기
 
 ## 📀 프로젝트 소개 & 기능
-- 뮤직 플레이리스트 & 플레이어 구현 웹사이트입니다
-- 로그인된 유저는 자신만의 플레이리스트를 가질 수 있습니다
-- 전체 반복 재생 & 랜덤 재생이 가능합니다
-- 재생 수를 기반으로 한 순위 차트를 확인할 수 있습니다
-- 유저 프로필 수정이 가능합니다
-- 등록된 뮤직비디오를 감상할 수 있습니다
-- 반응형 웹페이지로 제작하였습니다
+#### 뮤직 플레이리스트 & 플레이어 구현 웹사이트입니다
+ ### Play List 
+ - 전체 반복 재생 & 랜덤 재생 설정이 가능합니다
+ - 로그인된 유저는 자신만의 플레이리스트를 가질 수 있습니다
+ - 플레이 리스트에서 자유롭게 다른 곡 재생이 가능합니다
+ - 같은 곡 중복 추가가 가능합니다
+ - 개별 곡 삭제가 가능하며 현재 재생되고 있는 곡이 삭제되면 다음곡이 재생됩니다
+ - 현재 재생되고 있는 노래에 대한 애니메이션을 적용하였습니다 
+
+ ### Player
+ - 이전곡 & 다음곡 재생이 가능합니다
+ - 노래를 찜(하트)할 수 있습니다.
+ - 음량을 조절할 수 있습니다
+ - 원하는 부분으로 건너뛰기가 가능합니다
+
+ 
+ ### 인기 차트
+ - 노래가 재생되면(=플레이리스트에 담겨지면) 해당 노래 재생수가 1씩 올라갑니다
+ - 누적 재생 수를 기반으로 한 순위 차트를 확인할 수 있습니다
+  
+ ### 로그인 & 회원가입
+ - 아이디, 비밀번호, 닉네임 정보로 회원가입이 가능합니다
+ - 비밀번호는 bcrypt 라이브러리를 사용하여 암호(해시)화되어 저장됩니다 
+ - 아이디는 이미 존재하는 아이디와 중복될 수 없습니다
+ 
+ ### 마이페이지
+  - 유저 프로필 이미지와 닉네임 수정이 가능합니다
+  - 찜(하트) 누른 곡을 확인할 수 있습니다
+ 
+ ### 뮤직비디오
+  - youtube api를 이용하였습니다
+  - db에 등록된 뮤직비디오를 감상할 수 있습니다
+  - 모달 형태로 구현하였습니다
+  
+ ### 반응형 페이지
+  - 데스크탑, 모바일 등 기기별로 다른 레이아웃을 적용하였습니다
+ 
+<br/>
 
 ## 📀 Demo
 
-|PLAY|PLAYLIST|
+|PLAYER|PLAYLIST|
 |:---:|:---:|
-|테스트1|테스트2|
+| <img width="450px" height="248px" src="https://user-images.githubusercontent.com/101038390/236477042-d4fd5980-5bdc-4065-8ecb-4fb4f40e0281.gif" />|<img width="450px" height="248px" src="https://user-images.githubusercontent.com/101038390/236475039-2933098a-1ba4-4acc-a1cb-e5d2fd97f44c.gif"  />|
 
 |로그인|마이페이지|
 |:---:|:---:|
-|테스트1|테스트2|
+| <img width="450px" height="248px" src="https://user-images.githubusercontent.com/101038390/236474390-a93e72e2-4b84-445d-ad16-13ef974b5b76.gif"  />|  <img width="450px" height="248px" src="https://user-images.githubusercontent.com/101038390/236475292-e6d3f941-e317-4fc6-b433-8820a6cb3b47.gif"  />|
 
-|차트|마이페이지|
+|차트|뮤직비디오|
 |:---:|:---:|
-|테스트1|테스트2|
+| <img width="450px" height="248px" src="https://user-images.githubusercontent.com/101038390/236474408-955459cd-2759-4e5e-ab85-9488d84eba1c.gif"/> | <img width="450px" height="248px" src="https://user-images.githubusercontent.com/101038390/236477035-ab5aaab4-3e73-4ea2-a676-b1960450b7c0.gif"  />|
 
 
 ## 💻Tech Stack
 ### Back-end
 
-<img src="https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white"> <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white">
+<img  src="https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white"> <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white">
 
 ### Front-end
 <img src="https://img.shields.io/badge/pug-A86454?style=for-the-badge&logo=pug&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
