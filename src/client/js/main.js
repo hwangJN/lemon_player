@@ -34,6 +34,48 @@ let subnextBtn = null;
 let currentSongIndex = 0; // 현재 재생 곡 idx
 let shuffle = false; //모드
 
+//플레이리스트 초기화 -> 서버 연결 후
+export function PLview() {
+  const playAni = document.createElement("div");
+  playAni.classList.add("playAni");
+  playAni.innerHTML = `
+    <div class="stroke"></div>
+    <div class="stroke"></div>
+    <div class="stroke"></div>
+    <div class="stroke"></div>
+    <div class="stroke"></div>
+  `;
+  songWrap.append(playAni);
+  myPLAYLIST.forEach((eachSong) => {
+    const PLSongWrap = document.createElement("div");
+    PLSongWrap.classList.add("PL-song-wrap");
+    PLSongWrap.innerHTML = `
+    <div class="playlist-each-song" data-song-id=${eachSong._id} music="${eachSong.music}" id="${eachSong.id}" >
+      <img class="coverImg" src="${eachSong.albumCover}"/>
+      <div class="song-detail">
+        <div class="songInfo">
+          <span class="title">${eachSong.title}</span>
+          <span class="singer">${eachSong.singer}</span>
+        </div>
+      </div>
+    </div>
+    <i class="fa fa-minus songDelete"></i>
+    `;
+    songWrap.append(PLSongWrap);
+    const playlistEachSong = PLSongWrap.querySelector(".playlist-each-song");
+    playlistEachSong.addEventListener("click", () => {
+      EachSongPlay(playlistEachSong);
+      ActiveSong(playlistEachSong);
+      currentSongIndex = myPLAYLIST.findIndex(
+        (song) => song.id === Number(playlistEachSong.getAttribute("id"))
+      );
+    });
+    PLSongWrap.querySelector(".songDelete").addEventListener("click", () => {
+      DeleteSong(playlistEachSong);
+    });
+  });
+}
+
 function playMusic() {
   audio.play();
   playBtn.classList.add("fa-pause");
@@ -162,48 +204,54 @@ function EmptyPlayer() {
   albumCover.style.animationPlayState = "paused";
 }
 
-//플레이리스트 그려내기
-export function PLview() {
-  const playAni = document.createElement("div");
-  playAni.classList.add("playAni");
-  playAni.innerHTML = `
-    <div class="stroke"></div>
-    <div class="stroke"></div>
-    <div class="stroke"></div>
-    <div class="stroke"></div>
-    <div class="stroke"></div>
-  `;
-  myPLAYLIST.forEach((eachSong) => {
+// HTML에 곡 추가
+function appendSong(eachSong) {
+  if (!document.querySelector(".playAni")) {
+    const playAni = document.createElement("div");
+    playAni.classList.add("playAni");
+    playAni.innerHTML = `
+      <div class="stroke"></div>
+      <div class="stroke"></div>
+      <div class="stroke"></div>
+      <div class="stroke"></div>
+      <div class="stroke"></div>
+    `;
     songWrap.append(playAni);
-    const PLSongWrap = document.createElement("div");
-    PLSongWrap.classList.add("PL-song-wrap");
-    PLSongWrap.innerHTML = `
-    <div class="playlist-each-song" data-song-id=${eachSong._id} music="${eachSong.music}" id="${eachSong.id}" >
-      <img class="coverImg" src="${eachSong.albumCover}"/>
-      <div class="song-detail">
-        <div class="songInfo">
-          <span class="title">${eachSong.title}</span>
-          <span class="singer">${eachSong.singer}</span>
-        </div>
+  }
+  const PLSongWrap = document.createElement("div");
+  PLSongWrap.classList.add("PL-song-wrap");
+  PLSongWrap.innerHTML = `
+  <div class="playlist-each-song" data-song-id=${eachSong._id} music="${eachSong.music}" id="${eachSong.id}" >
+    <img class="coverImg" src="${eachSong.albumCover}"/>
+    <div class="song-detail">
+      <div class="songInfo">
+        <span class="title">${eachSong.title}</span>
+        <span class="singer">${eachSong.singer}</span>
       </div>
     </div>
-    <i class="fa fa-minus songDelete"></i>
-    `;
-    songWrap.append(PLSongWrap);
-    const playlistEachSong = PLSongWrap.querySelector(".playlist-each-song");
-    playlistEachSong.addEventListener("click", () => {
-      EachSongPlay(playlistEachSong);
-      ActiveSong(playlistEachSong);
-      currentSongIndex = myPLAYLIST.findIndex(
-        (song) => song.id === Number(playlistEachSong.getAttribute("id"))
-      );
-    });
-    PLSongWrap.querySelector(".songDelete").addEventListener("click", () => {
-      DeleteSong(playlistEachSong);
-    });
+  </div>
+  <i class="fa fa-minus songDelete"></i>
+  `;
+  songWrap.appendChild(PLSongWrap);
+  const playlistEachSong = PLSongWrap.querySelector(".playlist-each-song");
+  playlistEachSong.addEventListener("click", () => {
+    EachSongPlay(playlistEachSong);
+    ActiveSong(playlistEachSong);
+    currentSongIndex = myPLAYLIST.findIndex(
+      (song) => song.id === Number(playlistEachSong.getAttribute("id"))
+    );
+  });
+  PLSongWrap.querySelector(".songDelete").addEventListener("click", () => {
+    DeleteSong(playlistEachSong);
   });
 }
-//플레이리스트 곡 삭제
+
+// HTML에 곡 삭제
+function DeleteSongElement(songElement) {
+  const removingOne = songElement.parentElement;
+  removingOne.remove();
+}
+//플레이리스트 곡 삭제 -> array 설정
 function DeleteSong(eachSong) {
   //현재 재생중인 곡 삭제
   if (eachSong.getAttribute("id") === audio.getAttribute("id")) {
@@ -212,8 +260,7 @@ function DeleteSong(eachSong) {
       myPLAYLIST = myPLAYLIST.filter(
         (song) => song.id != eachSong.getAttribute("id")
       );
-      songWrap.innerHTML = ``;
-      PLview();
+      DeleteSongElement(eachSong);
     } else {
       nextSong(true);
       let nextIdx =
@@ -224,11 +271,10 @@ function DeleteSong(eachSong) {
         nextIdx = 0;
       }
       const nextID = String(myPLAYLIST[nextIdx].id);
-      songWrap.innerHTML = ``;
       myPLAYLIST = myPLAYLIST.filter(
         (song) => song.id != eachSong.getAttribute("id")
       );
-      PLview();
+      DeleteSongElement(eachSong);
       let nextItem = null;
       const PLSongs = songWrap.querySelectorAll(".playlist-each-song");
       for (let song of PLSongs) {
@@ -249,8 +295,7 @@ function DeleteSong(eachSong) {
     myPLAYLIST = myPLAYLIST.filter(
       (song) => song.id != eachSong.getAttribute("id")
     );
-    songWrap.innerHTML = ``;
-    PLview();
+    DeleteSongElement(eachSong);
     const PLSongs = songWrap.querySelectorAll(".playlist-each-song");
     let currentSong = null;
     for (let song of PLSongs) {
@@ -270,21 +315,20 @@ function DeleteSong(eachSong) {
   }
   handleSongDelete(eachSong);
 }
-//플레이리스트 곡 추가
+//플레이리스트 곡 추가 -> array 설정
 function AddSong(songElem) {
   const id = Date.now();
-  myPLAYLIST.push({
+  const songInfo = {
     title: songElem.querySelector(".title").innerHTML,
     singer: songElem.querySelector(".singer").innerHTML,
     albumCover: songElem.querySelector("img").src,
     music: songElem.getAttribute("music"),
     _id: songElem.getAttribute("data-song-id"),
     id: id,
-  });
-  songWrap.innerHTML = ``;
-  PLview();
+  };
+  myPLAYLIST.push(songInfo);
+  appendSong(songInfo);
   const songs = songWrap.querySelectorAll(".playlist-each-song");
-
   EachSongPlay(songs[songs.length - 1]);
   ActiveSong(songs[songs.length - 1]);
   currentSongIndex = songs.length - 1;
@@ -322,7 +366,7 @@ function EachSongPlay(element) {
   }
 }
 
-/////// 메인 화면에 있는 곡 클릭시 userPL(DB)에 추가 & 해당 곡 화면 플리에 추가
+/////// 메인 화면 곡 클릭시 userPL(DB)에 추가 -> 서버 요청
 function handleSongClick(songElem) {
   const songId = songElem.dataset.songId;
   // 음악 재생 시 화면 playlist에 바로 추가하기
@@ -343,11 +387,10 @@ function handleSongClick(songElem) {
     }
   });
 }
-/////// 플레이리스트에 있는 곡 삭제 시 user db에서 해당 곡 삭제
+/////// 플레이리스트 곡 삭제 시 user db에서 해당 곡 삭제 -> 서버 요청
 function handleSongDelete(songElem) {
   const songId = songElem.getAttribute("data-song-id");
-
-  // 유저 db - playlist에 곡 추가
+  // 유저 db - playlist에 곡 삭제
   fetch("/delete", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
