@@ -140,6 +140,8 @@ function ActiveSong(element) {
   element.querySelector(".title").style.fontWeight = "500";
   element.querySelector(".singer").style.fontWeight = "400";
   element.querySelector(".singer").style.color = "#650dec";
+
+  ifNotExistPlayAni(); // 현재 재생곡이 삭제될 경우 -> 새로 생성
   const playAni = document.querySelector(".playAni");
   playAni.style.display = "flex";
   element.appendChild(playAni);
@@ -153,6 +155,7 @@ function changeMusicInfo(index) {
   singer.innerHTML = myPLAYLIST[index].singer;
   currentBar.style.width = "0%";
   playMusic();
+
   const PLSongs = songWrap.querySelectorAll(".playlist-each-song");
   ActiveSong(PLSongs[index]);
   let exist = undefined;
@@ -186,11 +189,24 @@ function prevSong() {
 function nextSong(delmode = false) {
   // delmode : 현재 재생곡 삭제 -> 자동 다음 곡 재생 -> shuffle 모드 해제
   let nextSongIndex = null;
-  if (shuffle && !delmode) {
-    nextSongIndex = Math.floor(Math.random() * myPLAYLIST.length);
+
+  //현재곡 삭제시 강제 다음곡 - 셔플 적용 x
+  if (delmode) {
+    // 가장 최근(아래) 추가된 곡 삭제
+    if (currentSongIndex >= myPLAYLIST.length) {
+      nextSongIndex = 0;
+    } else {
+      nextSongIndex = currentSongIndex;
+    }
   } else {
-    nextSongIndex = (currentSongIndex + 1) % myPLAYLIST.length;
+    // 노래 끝나고 자동 다음곡 & 다음곡 btn
+    if (shuffle) {
+      nextSongIndex = Math.floor(Math.random() * myPLAYLIST.length);
+    } else {
+      nextSongIndex = (currentSongIndex + 1) % myPLAYLIST.length;
+    }
   }
+
   currentSongIndex = nextSongIndex;
   changeMusicInfo(nextSongIndex);
 }
@@ -204,8 +220,8 @@ function EmptyPlayer() {
   albumCover.style.animationPlayState = "paused";
 }
 
-// HTML에 곡 추가
-function appendSong(eachSong) {
+//activeSong 애니메이션이 없는 경우 -> 생성
+function ifNotExistPlayAni() {
   if (!document.querySelector(".playAni")) {
     const playAni = document.createElement("div");
     playAni.classList.add("playAni");
@@ -218,6 +234,11 @@ function appendSong(eachSong) {
     `;
     songWrap.append(playAni);
   }
+}
+
+// HTML에 곡 추가
+function appendSong(eachSong) {
+  ifNotExistPlayAni();
   const PLSongWrap = document.createElement("div");
   PLSongWrap.classList.add("PL-song-wrap");
   PLSongWrap.innerHTML = `
@@ -252,68 +273,36 @@ function DeleteSongElement(songElement) {
   removingOne.remove();
 }
 //플레이리스트 곡 삭제 -> array 설정
-function DeleteSong(eachSong) {
+function DeleteSong(deleteSong) {
   //현재 재생중인 곡 삭제
-  if (eachSong.getAttribute("id") === audio.getAttribute("id")) {
-    if (myPLAYLIST.length === 1) {
+  if (deleteSong.getAttribute("id") === audio.getAttribute("id")) {
+    myPLAYLIST = myPLAYLIST.filter(
+      (song) => song.id != deleteSong.getAttribute("id")
+    );
+    DeleteSongElement(deleteSong); //html 요소 삭제
+
+    if (myPLAYLIST.length === 0) {
+      // 한 곡 남아있었을 경우
       EmptyPlayer();
-      myPLAYLIST = myPLAYLIST.filter(
-        (song) => song.id != eachSong.getAttribute("id")
-      );
-      DeleteSongElement(eachSong);
     } else {
       nextSong(true);
-      let nextIdx =
-        myPLAYLIST.findIndex(
-          (song) => String(song.id) === String(eachSong.getAttribute("id"))
-        ) + 1;
-      if (nextIdx > myPLAYLIST.length - 1) {
-        nextIdx = 0;
-      }
-      const nextID = String(myPLAYLIST[nextIdx].id);
-      myPLAYLIST = myPLAYLIST.filter(
-        (song) => song.id != eachSong.getAttribute("id")
-      );
-      DeleteSongElement(eachSong);
-      let nextItem = null;
-      const PLSongs = songWrap.querySelectorAll(".playlist-each-song");
-      for (let song of PLSongs) {
-        if (song.getAttribute("id") === String(nextID)) {
-          nextItem = song;
-          break;
-        }
-      }
-      if (nextItem) {
-        currentSongIndex = myPLAYLIST.findIndex(
-          (song) => song.id === Number(nextItem.getAttribute("id"))
-        );
-        ActiveSong(nextItem);
-      }
     }
   } else {
     //재생중이지 않은 곡 삭제
-    myPLAYLIST = myPLAYLIST.filter(
-      (song) => song.id != eachSong.getAttribute("id")
+    const deleteSongIdx = myPLAYLIST.findIndex(
+      (song) => String(song.id) === String(deleteSong.getAttribute("id"))
     );
-    DeleteSongElement(eachSong);
-    const PLSongs = songWrap.querySelectorAll(".playlist-each-song");
-    let currentSong = null;
-    for (let song of PLSongs) {
-      if (
-        String(song.getAttribute("id")) === String(audio.getAttribute("id"))
-      ) {
-        currentSong = song;
-        break;
-      }
-    }
-    if (currentSong) {
-      currentSongIndex = myPLAYLIST.findIndex(
-        (song) => song.id === Number(currentSong.getAttribute("id"))
-      );
-      ActiveSong(currentSong);
+    myPLAYLIST = myPLAYLIST.filter(
+      (song) => song.id != deleteSong.getAttribute("id")
+    );
+    DeleteSongElement(deleteSong); //html 요소 삭제
+
+    //현재 재생곡보다 삭제되는 곡의 인덱스가 작을 경우 현재 재생곡 인덱스 감소
+    if (deleteSongIdx < currentSongIndex) {
+      currentSongIndex--;
     }
   }
-  handleSongDelete(eachSong);
+  handleSongDelete(deleteSong); // api 호출
 }
 //플레이리스트 곡 추가 -> array 설정
 function AddSong(songElem) {
