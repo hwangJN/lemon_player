@@ -18,6 +18,20 @@
  2. 랜덤재생 오류 수정
  3. modal 스크롤 방지 수정
  4. mongodb 업데이트 관련 버그 해결
+ ```
+ //callback함수 대신 exec() -> promise 처리
+ 
+ const updatedSong = await Song.findByIdAndUpdate(songId, {
+    $inc: { "meta.play": 1 },
+  })
+    .exec()
+    .then((music) => {
+      res.status(200);
+    })
+    .catch((error) => {
+      res.status(500).send("Internal server error");
+    });
+ ```
  5. 곡 추가/삭제 리팩토링
  
 <br/>
