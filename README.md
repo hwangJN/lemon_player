@@ -15,11 +15,48 @@
 
 ### 개선 Commits (2023.05 ~ ) 
  1. html 메타정보 수정
- 2. 랜덤재생 오류 수정
- 3. modal 스크롤 방지 수정
- 4. mongodb 업데이트 관련 버그 해결
+ url 공유시 (ex 카카오톡) 보여지는 메타정보 setting  
+ ```pug
+   meta(property="og:title" content="LEMON")
+   meta(property="og:description" content="MUSIC PLAYLIST")
+   mata(property="og:url" content="https://lemon-player.fly.dev/")
+   meta(property="og:image" content="/public/client/scss/img/LEMON-logo.png")
  ```
- //callback함수 대신 exec() -> promise 처리
+ 
+ <br/>
+ 
+ 2. modal 스크롤 방지 수정
+ 뮤비 관련 youtube iframe 모달 사용시 스크롤에 따라 모달 또한 움직이는 불편함을 없애기 위해 개선
+ ```javascript
+ //mv.js
+  mv.addEventListener("click",()=>{
+    //...
+     body.classList.add("stop-scrolling");
+    //...
+    }
+  )
+
+ ```
+ ```scss
+ //main.scss
+ 
+ body {
+  //...
+  &.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+ 
+ 
+ ```
+ 
+ <br/>
+ 
+ 3. mongodb 업데이트 관련 버그(한번 재생시 재생수 +2) 해결
+ 콜백함수 대신 exec() -> promise 처리
+ 
+ ```javascript
  
  const updatedSong = await Song.findByIdAndUpdate(songId, {
     $inc: { "meta.play": 1 },
@@ -32,7 +69,71 @@
       res.status(500).send("Internal server error");
     });
  ```
- 5. 곡 추가/삭제 리팩토링
+ <br/>
+ 
+ 4. 삭제 & 랜덤재생 관련 함수 리팩토링
+ ```javascript
+ //다양한 경우를 고려하여 리팩토링 
+ 
+ // 강제 다음곡 재생(PL)
+function nextSong(delmode = false) {
+  // delmode : 현재 재생곡 삭제 -> 자동 다음 곡 재생 -> shuffle 모드 해제
+  let nextSongIndex = null;
+
+  //현재곡 삭제시 강제 다음곡 - 셔플 적용 x
+  if (delmode) {
+    // 가장 최근(아래) 추가된 곡 삭제
+    if (currentSongIndex >= myPLAYLIST.length) {
+      nextSongIndex = 0;
+    } else {
+      nextSongIndex = currentSongIndex;
+    }
+  } else {
+    // 노래 끝나고 자동 다음곡 & 다음곡 btn
+    if (shuffle) {
+      nextSongIndex = Math.floor(Math.random() * myPLAYLIST.length);
+    } else {
+      nextSongIndex = (currentSongIndex + 1) % myPLAYLIST.length;
+    }
+  }
+
+  currentSongIndex = nextSongIndex;
+  changeMusicInfo(nextSongIndex);
+}
+ 
+ function DeleteSong(deleteSong) {
+  //현재 재생중인 곡 삭제
+  if (deleteSong.getAttribute("id") === audio.getAttribute("id")) {
+    myPLAYLIST = myPLAYLIST.filter(
+      (song) => song.id != deleteSong.getAttribute("id")
+    );
+    DeleteSongElement(deleteSong); //html 요소 삭제
+
+    if (myPLAYLIST.length === 0) {
+      // 한 곡 남아있었을 경우
+      EmptyPlayer();
+    } else {
+      nextSong(true);
+    }
+  } else {
+    //재생중이지 않은 곡 삭제
+    const deleteSongIdx = myPLAYLIST.findIndex(
+      (song) => String(song.id) === String(deleteSong.getAttribute("id"))
+    );
+    myPLAYLIST = myPLAYLIST.filter(
+      (song) => song.id != deleteSong.getAttribute("id")
+    );
+    DeleteSongElement(deleteSong); //html 요소 삭제
+
+    //현재 재생곡보다 삭제되는 곡의 인덱스가 작을 경우 현재 재생곡 인덱스 감소
+    if (deleteSongIdx < currentSongIndex) {
+      currentSongIndex--;
+    }
+  }
+  handleSongDelete(deleteSong); // api 호출
+}
+ 
+ ```
  
 <br/>
 
