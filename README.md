@@ -8,7 +8,7 @@
 </div>
 
 ## 📀 제작 동기
-- 노마드코더 클론 코딩 챌린지 참여(23.03.30 ~ 23.04.21 3주간) (+🏆[준우승상](https://nomadcoders.co/community/thread/7845))
+- 노마드코더 코딩 챌린지 참여(23.03.30 ~ 23.04.21 3주간) (+🏆[준우승상](https://nomadcoders.co/community/thread/7845))
 - Node, MongoDB 관련 경험 쌓기
 
 <br/>
